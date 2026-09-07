@@ -1,6 +1,37 @@
 // Events shown on the homepage. Managed through the developer panel and
 // persisted to localStorage so non-developers never touch the code.
 const EVENTS_STORAGE_KEY = 'watillery_events';
+const EVENTS_SEED_FLAG = 'watillery_events_seeded';
+
+// Events we have already done. Seeded once; after that the developer panel owns
+// the list. More get added over time.
+const SEED_EVENTS = [
+    {
+        id: 'evt_cne_2026',
+        title: 'The CNE 2026',
+        startDate: '2026-08-21',
+        endDate: '2026-09-07',
+        location: 'Exhibition Place, Toronto',
+        description:
+            'Our first year at the Canadian National Exhibition. We ran a Watillery booth for all 18 days of the fair, let people test-fire the electric blasters, and talked to more water-fight fanatics than we can count. Thanks to everyone who stopped by.',
+        url: '',
+        image: '',
+    },
+];
+
+function seedEventsIfNeeded() {
+    if (localStorage.getItem(EVENTS_SEED_FLAG)) return;
+    try {
+        const existing = JSON.parse(localStorage.getItem(EVENTS_STORAGE_KEY)) || [];
+        const ids = new Set(existing.map((e) => e.id));
+        const merged = existing.concat(SEED_EVENTS.filter((e) => !ids.has(e.id)));
+        localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(merged));
+        localStorage.setItem(EVENTS_SEED_FLAG, '1');
+    } catch (e) {
+        /* ignore */
+    }
+}
+seedEventsIfNeeded();
 
 const eventsStore = {
     all() {
@@ -77,8 +108,10 @@ function renderEvents() {
     const today = new Date().toISOString().slice(0, 10);
     const list = eventsStore.all().slice().sort((a, b) => (a.startDate || '').localeCompare(b.startDate || ''));
 
-    const upcoming = list.filter((e) => (e.endDate || e.startDate || '') >= today);
-    const past = list.filter((e) => (e.endDate || e.startDate || '') < today).reverse();
+    // An event is "past" once its last day has arrived.
+    const endOf = (e) => e.endDate || e.startDate || '';
+    const upcoming = list.filter((e) => endOf(e) > today);
+    const past = list.filter((e) => endOf(e) <= today).reverse();
 
     upcomingEl.innerHTML = upcoming.length
         ? upcoming.map(eventCardHTML).join('')

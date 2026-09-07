@@ -15,8 +15,8 @@ const NAV_HTML = `
             <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
             <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
             <li><a href="shop.html" class="nav-link" data-nav="shop">Shop</a></li>
-            <li><a href="index.html#events" class="nav-link" data-nav="events">Events</a></li>
-            <li><a href="index.html#contact" class="nav-link" data-nav="contact">Contact</a></li>
+            <li><a href="events.html" class="nav-link" data-nav="events">Events</a></li>
+            <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
         </ul>
         <div class="nav-actions">
             <button class="cart-btn" id="cartBtn" type="button" aria-label="Open cart">
@@ -83,8 +83,8 @@ const FOOTER_HTML = `
                     <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="index.html#events">Events</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li><a href="#" id="teamLink">Our Team</a></li>
                 </ul>
             </div>

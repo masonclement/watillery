@@ -590,3 +590,190 @@ a.cta-btn { text-decoration: none; display: inline-block; }
   .admin-row { grid-template-columns: 1fr; text-align: left; }
   .section-subtitle { margin-top: -16px; }
 }
+
+/* ==========================================================================
+   Round 3: type system, button character, redesigned About
+   ========================================================================== */
+
+body {
+  font-family: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4,
+.hero-title, .section-title, .events-heading,
+.product-name, .product-detail-info h2,
+.auth-header h2, .admin-header h2, .page-hero h1 {
+  font-family: 'Bricolage Grotesque', 'Hanken Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.hero-title { font-weight: 800; letter-spacing: -0.03em; }
+.section-title { font-weight: 700; }
+
+/* ---------- Header buttons: read as buttons, not bold text ---------- */
+
+.nav-actions .auth-btn,
+.nav-actions .cart-btn {
+  font-weight: 500;
+  border-radius: 999px;
+  letter-spacing: 0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.nav-actions .cart-btn {
+  background: linear-gradient(180deg, #3b82f6 0%, var(--primary-blue) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 9px 16px 9px 13px;
+}
+
+.nav-actions .cart-btn:hover {
+  background: linear-gradient(180deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+}
+
+.nav-actions .login-btn {
+  background: #fff;
+  color: var(--neutral-700);
+  border: 1px solid var(--neutral-200);
+  padding: 9px 18px;
+}
+
+.nav-actions .login-btn:hover {
+  background: var(--neutral-50);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
+}
+
+/* ---------- Yellow buttons: water rises up the tank on hover ---------- */
+
+.cta-btn,
+.checkout-btn,
+.newsletter button,
+.checkout-submit-btn {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.cta-btn::after,
+.checkout-btn::after,
+.newsletter button::after,
+.checkout-submit-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 120%, rgba(255, 255, 255, 0.35) 0 6px, transparent 7px),
+    radial-gradient(circle at 65% 130%, rgba(255, 255, 255, 0.3) 0 4px, transparent 5px),
+    linear-gradient(180deg, #5cc6ff 0%, #2f8bff 45%, var(--primary-blue) 100%);
+  transform: translateY(102%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-btn:hover,
+.checkout-btn:hover,
+.newsletter button:hover,
+.checkout-submit-btn:hover {
+  color: #fff;
+  background: var(--accent-yellow);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35), 0 0 0 3px rgba(92, 198, 255, 0.25);
+}
+
+.cta-btn:hover::after,
+.checkout-btn:hover::after,
+.newsletter button:hover::after,
+.checkout-submit-btn:hover::after {
+  transform: translateY(0);
+}
+
+/* keep the existing shimmer sweep from turning the bg orange */
+.cta-btn:hover { background: var(--accent-yellow) !important; }
+
+/* ---------- Redesigned About: photo background + side image ---------- */
+
+.about-section {
+  position: relative;
+  padding: 0;
+  background: var(--neutral-900);
+  overflow: hidden;
+}
+
+.about-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/photography/photography1.JPG');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.about-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30, 58, 138, 0.82) 0%, rgba(29, 78, 216, 0.78) 55%, rgba(37, 99, 235, 0.9) 100%);
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-xxxl) var(--spacing-md);
+  color: #fff;
+}
+
+.about-lead { max-width: 760px; margin-bottom: var(--spacing-xxl); }
+.about-lead h2 { font-size: 2.6rem; font-weight: 800; margin-bottom: var(--spacing-md); color: #fff; }
+.about-lead p { font-size: 1.15rem; line-height: 1.75; color: rgba(255, 255, 255, 0.92); }
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--spacing-xxl);
+  align-items: center;
+}
+
+.about-story p {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.02rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+.about-story .features { margin-top: var(--spacing-lg); }
+.about-story .feature { color: #fff; }
+.about-story .text-link { color: #fff; }
+.about-story .text-link:hover { color: var(--accent-yellow); }
+
+.about-photo {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+  transform: rotate(1.5deg);
+}
+
+.about-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 900px) {
+  .about-split { grid-template-columns: 1fr; }
+  .about-photo { transform: none; max-height: 360px; }
+  .about-lead h2 { font-size: 2rem; }
+}
+
+/* About on its own page: clear the fixed navbar */
+body[data-page="about"] .about-section .about-inner { padding-top: 128px; }
+
+/* ---------- Events section sits right under the hero now ---------- */
+.events-section { border-top: none; }
+
+/* Standalone contact / events pages */
+.page-section { padding: var(--spacing-xxxl) 0; }
+.page-section.alt { background: var(--light-blue); }

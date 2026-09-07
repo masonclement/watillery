@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account | Watillery</title>
-    <meta name="description" content="Your Watillery account and orders.">
+    <title>Events | Watillery</title>
+    <meta name="description" content="Where to find Watillery in person: fairs, markets and events.">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,28 +14,35 @@
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="auth-styles.css">
 </head>
-<body data-page="account">
+<body data-page="events">
     <div data-partial="nav"></div>
+
     <section class="page-hero short">
         <div class="container">
-            <h1>My Account</h1>
-            <p>Orders and account settings.</p>
+            <h1>Events</h1>
+            <p>Come say hi and try a blaster before you buy one.</p>
         </div>
         <div class="hero-wave" aria-hidden="true">
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,52 C240,96 480,96 720,56 C960,16 1200,8 1440,48 L1440,100 L0,100 Z"></path></svg>
         </div>
     </section>
-    <section class="doc-page">
+
+    <section class="events-section" style="border-top:none">
         <div class="container">
-            <div class="doc-note">Accounts currently live in this browser only. Order history and profile editing land when the backend is connected.</div>
-            <h2>Signed in</h2>
-            <p>Use the account menu in the top right to sign out. To change your password for now, sign out and use "Forgot password?" on the sign-in screen.</p>
-            <h2>Orders</h2>
-            <p>Past orders will appear here once checkout is live.</p>
+            <div class="events-block">
+                <h3 class="events-heading">Upcoming</h3>
+                <div class="events-grid" id="upcomingEvents"></div>
+            </div>
+            <div class="events-block">
+                <h3 class="events-heading">Past events</h3>
+                <div class="events-grid past" id="pastEvents"></div>
+            </div>
         </div>
     </section>
+
     <div data-partial="footer"></div>
     <div data-partial="modals"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });</script>
     <script src="database.js"></script>

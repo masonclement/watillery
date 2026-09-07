@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account | Watillery</title>
-    <meta name="description" content="Your Watillery account and orders.">
+    <title>Contact | Watillery</title>
+    <meta name="description" content="Get in touch with the Watillery team.">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,28 +14,54 @@
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="auth-styles.css">
 </head>
-<body data-page="account">
+<body data-page="contact">
     <div data-partial="nav"></div>
+
     <section class="page-hero short">
         <div class="container">
-            <h1>My Account</h1>
-            <p>Orders and account settings.</p>
+            <h1>Get In Touch</h1>
+            <p>Questions, wholesale, a product you want us to track down. We read everything.</p>
         </div>
         <div class="hero-wave" aria-hidden="true">
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,52 C240,96 480,96 720,56 C960,16 1200,8 1440,48 L1440,100 L0,100 Z"></path></svg>
         </div>
     </section>
-    <section class="doc-page">
+
+    <section class="contact-section">
         <div class="container">
-            <div class="doc-note">Accounts currently live in this browser only. Order history and profile editing land when the backend is connected.</div>
-            <h2>Signed in</h2>
-            <p>Use the account menu in the top right to sign out. To change your password for now, sign out and use "Forgot password?" on the sign-in screen.</p>
-            <h2>Orders</h2>
-            <p>Past orders will appear here once checkout is live.</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <span class="material-symbols-rounded contact-icon" aria-hidden="true">mail</span>
+                        <span>info@watillery.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-rounded contact-icon" aria-hidden="true">call</span>
+                        <span>(647) 248-5697</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-rounded contact-icon" aria-hidden="true">location_on</span>
+                        <span>Ontario, Canada</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-rounded contact-icon" aria-hidden="true">schedule</span>
+                        <span>We usually reply within one business day.</span>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
+
     <div data-partial="footer"></div>
     <div data-partial="modals"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });</script>
     <script src="database.js"></script>

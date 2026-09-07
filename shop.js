@@ -29,7 +29,7 @@ function shopRender() {
 
 function productCardHTML(product) {
     const outOfStock = !!product.outOfStock || (product.note || '').toLowerCase().includes('unavailable');
-    const image = (product.images && product.images[0]) || product.image || 'img/icon.png';
+    const image = product.image || (product.images && product.images[0]) || 'img/icon.png';
     return `
         <div class="product-card" data-product-id="${product.id}">
             ${product.note ? `<div class="product-note">${product.note}</div>` : ''}
