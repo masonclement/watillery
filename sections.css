@@ -98,6 +98,10 @@
 
 /* ---------- Hero wave ---------- */
 
+/* Run the blue past the fold so the wave only shows once you scroll a little. */
+.hero { min-height: calc(100vh + 150px); }
+.hero .hero-content { transform: translateY(-45px); }
+
 .hero-wave {
   position: absolute;
   bottom: -1px;
