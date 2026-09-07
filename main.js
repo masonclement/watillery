@@ -516,14 +516,21 @@ function initializeNavigation() {
         });
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href === '#' || href === '') return;
-            const target = document.querySelector(href);
+            const raw = this.getAttribute('href');
+            if (!raw || raw === '#' || raw === '') return;
+            const [path, hash] = raw.split('#');
+            if (!hash) return;
+            // Only hijack links that point at a section on THIS page.
+            const samePage = path === '' || path === currentPath || path === './' + currentPath;
+            if (!samePage) return;
+            const target = document.getElementById(hash);
             if (!target) return;
             e.preventDefault();
             window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            history.replaceState(null, '', '#' + hash);
         });
     });
 
@@ -715,6 +722,14 @@ function showCheckoutForm() {
                             )
                             .join('')}
                     </div>
+                    ${(() => {
+                        const sub = getCartSubtotal();
+                        const disc = typeof currentDiscount === 'function' ? currentDiscount(sub) : null;
+                        return disc
+                            ? `<div class="checkout-line"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+                               <div class="checkout-line discount"><span>Discount (${disc.code})</span><span>-$${disc.amount.toFixed(2)}</span></div>`
+                            : '';
+                    })()}
                     <div class="checkout-total"><strong>Total: $${getCartTotal().toFixed(2)}</strong></div>
                 </div>
                 <button type="submit" class="checkout-submit-btn">Complete Order</button>
@@ -728,6 +743,7 @@ function showCheckoutForm() {
         document.body.style.overflow = 'auto';
         showNotification('Order placed successfully! (Demo mode)', 'success');
         cart.length = 0;
+        if (typeof appliedPromo !== 'undefined') appliedPromo.clear();
         updateCartCount();
         saveCart();
     });

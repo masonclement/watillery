@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | Watillery</title>
+    <title>Shipping | Watillery</title>
+    <meta name="description" content="Watillery shipping times, rates and tracking.">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,27 +14,36 @@
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="auth-styles.css">
 </head>
-<body data-page="">
+<body data-page="shipping">
     <div data-partial="nav"></div>
-
-    <section class="hero" id="home">
-        <div class="bubble-container">
-            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">404</h1>
-            <p class="hero-subtitle">That page took a wrong turn at the pool. Let's get you back.</p>
-            <a href="index.html" class="cta-btn">Return Home</a>
+    <section class="page-hero short">
+        <div class="container">
+            <h1>Shipping</h1>
+            <p>Where we ship and how long it takes.</p>
         </div>
         <div class="hero-wave" aria-hidden="true">
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,52 C240,96 480,96 720,56 C960,16 1200,8 1440,48 L1440,100 L0,100 Z"></path></svg>
         </div>
     </section>
-
+    <section class="doc-page">
+        <div class="container">
+            <div class="doc-note">Placeholder copy for the rebuild. Final wording comes from the real watillery.com pages once we have access.</div>
+            <h2>Processing</h2>
+            <p>Orders are usually packed and handed to the carrier within 1 to 3 business days.</p>
+            <h2>Delivery estimates</h2>
+            <ul>
+                <li>Canada: 3 to 8 business days after dispatch.</li>
+                <li>United States: 5 to 12 business days after dispatch.</li>
+                <li>International: 10 to 25 business days, depending on customs.</li>
+            </ul>
+            <h2>Tracking</h2>
+            <p>Every parcel ships with tracking. You get the number by email as soon as the label is created.</p>
+            <h2>Duties and taxes</h2>
+            <p>Orders outside Canada may be charged import duties or taxes on delivery. Those are set by your country and are the buyer's responsibility.</p>
+        </div>
+    </section>
     <div data-partial="footer"></div>
     <div data-partial="modals"></div>
-
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });</script>
     <script src="database.js"></script>

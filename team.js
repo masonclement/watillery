@@ -39,15 +39,17 @@ const TEAM_MEMBERS = [
 ];
 
 function renderTeam() {
-    const grid = document.getElementById('teamGrid');
-    if (!grid) return;
-    grid.innerHTML = TEAM_MEMBERS.map((member) => `
+    const html = TEAM_MEMBERS.map((member) => `
         <div class="team-card">
             <img src="${member.photo}" alt="${member.name}" loading="lazy">
             <h3>${member.name}</h3>
             <p>${member.roles.join('<br>')}</p>
         </div>
     `).join('');
+    ['teamGrid', 'teamGridPage'].forEach((id) => {
+        const grid = document.getElementById(id);
+        if (grid) grid.innerHTML = html;
+    });
 }
 
 document.addEventListener('DOMContentLoaded', renderTeam);

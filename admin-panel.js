@@ -110,11 +110,13 @@ class AdminPanel {
                     <button class="admin-tab active" data-pane="overview">Overview</button>
                     <button class="admin-tab" data-pane="products">Products</button>
                     <button class="admin-tab" data-pane="events">Events</button>
+                    <button class="admin-tab" data-pane="promos">Promo Codes</button>
                 </div>
                 <div class="admin-content">
                     <div class="admin-pane active" data-pane="overview"></div>
                     <div class="admin-pane" data-pane="products"></div>
                     <div class="admin-pane" data-pane="events"></div>
+                    <div class="admin-pane" data-pane="promos"></div>
                 </div>
             </div>`;
         document.body.appendChild(el);
@@ -173,6 +175,7 @@ class AdminPanel {
         if (this.activeTab === 'overview') this.renderOverview();
         if (this.activeTab === 'products') this.renderProducts();
         if (this.activeTab === 'events') this.renderEvents();
+        if (this.activeTab === 'promos') this.renderPromos();
     }
 
     /* ---------- Overview ---------- */
@@ -182,12 +185,14 @@ class AdminPanel {
         const builtIn = typeof products !== 'undefined' ? products.length : 0;
         const custom = productStore.custom().length;
         const events = window.eventsStore ? eventsStore.all().length : 0;
+        const promos = window.promoStore ? promoStore.all().length : 0;
         const users = secureDB.countUsers();
         pane.innerHTML = `
             <div class="admin-stat-grid">
                 <div class="admin-stat"><div class="num">${builtIn + custom}</div><div class="lbl">Products</div></div>
                 <div class="admin-stat"><div class="num">${custom}</div><div class="lbl">Added here</div></div>
                 <div class="admin-stat"><div class="num">${events}</div><div class="lbl">Events</div></div>
+                <div class="admin-stat"><div class="num">${promos}</div><div class="lbl">Promo codes</div></div>
                 <div class="admin-stat"><div class="num">${users}</div><div class="lbl">Accounts</div></div>
             </div>
             <div class="admin-card">
@@ -517,6 +522,100 @@ class AdminPanel {
                             eventsStore.remove(id);
                             this.renderEvents();
                         }
+                    }
+                });
+            });
+        });
+    }
+
+    /* ---------- Promo codes ---------- */
+
+    renderPromos() {
+        const pane = this.el.querySelector('.admin-pane[data-pane="promos"]');
+        const list = window.promoStore ? promoStore.all() : [];
+
+        pane.innerHTML = `
+            <div class="admin-card">
+                <h3>Create a promo code</h3>
+                <div class="admin-grid-2">
+                    <div class="admin-field"><label>Code</label><input id="pc-code" type="text" placeholder="SUMMER25" style="text-transform:uppercase"></div>
+                    <div class="admin-field"><label>Discount type</label>
+                        <select id="pc-type"><option value="percent">Percentage %</option><option value="fixed">Fixed amount $</option></select>
+                    </div>
+                </div>
+                <div class="admin-grid-2">
+                    <div class="admin-field"><label>Amount</label><input id="pc-value" type="number" step="0.01" min="0" placeholder="25"></div>
+                    <div class="admin-field"><label>Minimum subtotal ($, optional)</label><input id="pc-min" type="number" step="0.01" min="0" placeholder="0"></div>
+                </div>
+                <div class="admin-grid-2">
+                    <div class="admin-field"><label>Starts (optional)</label><input id="pc-starts" type="date"></div>
+                    <div class="admin-field"><label>Expires (optional)</label><input id="pc-expires" type="date"></div>
+                </div>
+                <button class="admin-btn" id="pc-save">Save code</button>
+            </div>
+            <div class="admin-card">
+                <h3>Active &amp; scheduled codes</h3>
+                ${
+                    list.length
+                        ? list
+                              .map(
+                                  (p) => `
+                        <div class="admin-row" data-code="${p.code}">
+                            <span class="material-symbols-rounded" style="font-size:32px;color:var(--primary-blue)">sell</span>
+                            <div>
+                                <strong>${p.code}</strong>
+                                <div class="muted">${p.type === 'percent' ? p.value + '% off' : '$' + Number(p.value).toFixed(2) + ' off'}${p.minSubtotal ? ' &middot; min $' + Number(p.minSubtotal).toFixed(2) : ''} &middot; ${promoWindowText(p)}${p.active ? '' : ' &middot; INACTIVE'}</div>
+                            </div>
+                            <div class="admin-row-actions">
+                                <button class="admin-btn secondary" data-act="toggle">${p.active ? 'Disable' : 'Enable'}</button>
+                                <button class="admin-btn danger" data-act="delete">Delete</button>
+                            </div>
+                        </div>`
+                              )
+                              .join('')
+                        : '<p class="muted">No promo codes yet.</p>'
+                }
+            </div>`;
+
+        pane.querySelector('#pc-save').addEventListener('click', () => {
+            const code = pane.querySelector('#pc-code').value.trim();
+            const value = parseFloat(pane.querySelector('#pc-value').value);
+            if (!code || isNaN(value) || value <= 0) {
+                showNotification('A code and a discount amount are required.', 'error');
+                return;
+            }
+            const starts = pane.querySelector('#pc-starts').value;
+            const expires = pane.querySelector('#pc-expires').value;
+            if (starts && expires && expires < starts) {
+                showNotification('The expiry date is before the start date.', 'error');
+                return;
+            }
+            promoStore.upsert({
+                code,
+                type: pane.querySelector('#pc-type').value,
+                value,
+                minSubtotal: pane.querySelector('#pc-min').value,
+                starts,
+                expires,
+            });
+            showNotification(`Promo code ${code.toUpperCase()} saved.`, 'success');
+            this.renderPromos();
+        });
+
+        pane.querySelectorAll('.admin-row').forEach((row) => {
+            const code = row.dataset.code;
+            row.querySelectorAll('[data-act]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    if (btn.dataset.act === 'delete') {
+                        if (window.confirm(`Delete promo code ${code}?`)) {
+                            promoStore.remove(code);
+                            this.renderPromos();
+                        }
+                    }
+                    if (btn.dataset.act === 'toggle') {
+                        const p = promoStore.find(code);
+                        promoStore.upsert({ ...p, active: !p.active });
+                        this.renderPromos();
                     }
                 });
             });

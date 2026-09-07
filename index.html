@@ -14,89 +14,21 @@
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="auth-styles.css">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home"><img src="img/logo.png" alt="Watillery" class="watillery-logo"></a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="https://watillery.com/about/" class="nav-link">About</a></li>
-                <li><a href="#events" class="nav-link">Events</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="cart-btn" id="cartBtn" aria-label="Open cart">
-                    <span class="material-symbols-rounded" aria-hidden="true">shopping_cart</span>
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
-
-                <!-- Authentication -->
-                <div class="auth-buttons">
-                    <button class="auth-btn login-btn open-login">
-                        <span class="material-symbols-rounded" aria-hidden="true">account_circle</span>
-                        Sign In
-                    </button>
-                </div>
-
-                <!-- User Menu (hidden until signed in) -->
-                <div class="user-menu" hidden>
-                    <div class="user-avatar">
-                        <span class="user-initial"></span>
-                    </div>
-                    <button class="user-name-btn" type="button">
-                        <span class="user-display-name"></span>
-                        <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
-                    </button>
-                    <div class="user-dropdown">
-                        <div class="user-info">
-                            <div class="user-name"></div>
-                            <div class="user-email"></div>
-                            <span class="admin-badge" hidden>
-                                <span class="material-symbols-rounded" aria-hidden="true">shield_person</span>
-                                Admin
-                            </span>
-                        </div>
-                        <div class="user-menu-items">
-                            <a href="https://watillery.com/my-account/" class="user-menu-item">
-                                <span class="material-symbols-rounded" aria-hidden="true">package_2</span> My Orders
-                            </a>
-                            <a href="https://watillery.com/my-account/edit-account/" class="user-menu-item">
-                                <span class="material-symbols-rounded" aria-hidden="true">settings</span> Account Settings
-                            </a>
-                            <button class="user-menu-item logout-btn">
-                                <span class="material-symbols-rounded" aria-hidden="true">logout</span> Sign Out
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
+<body data-page="home">
+    <div data-partial="nav"></div>
 
     <section id="home" class="hero">
         <div class="bubble-container">
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
-            <div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Watillery</h1>
             <p class="hero-subtitle">Premium water guns and aquatic toys for endless fun for all ages!</p>
-            <a class="cta-btn" href="https://watillery.com/shop/">Shop Now</a>
+            <a class="cta-btn" href="shop.html">Shop Now</a>
         </div>
         <div class="hero-wave" aria-hidden="true">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C240,110 480,10 720,40 C960,70 1200,120 1440,72 L1440,120 L0,120 Z"></path></svg>
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,52 C240,96 480,96 720,56 C960,16 1200,8 1440,48 L1440,100 L0,100 Z"></path></svg>
         </div>
     </section>
 
@@ -123,7 +55,7 @@
                 <div class="why-card">
                     <span class="material-symbols-rounded why-icon" aria-hidden="true">flag</span>
                     <h3>Proudly Canadian</h3>
-                    <p>Watillery is a small Ontario team. When you message us, you are talking to the people who pick the products.</p>
+                    <p>Watillery is a small Ontario team. When you message us, you are talking to the people who make the products.</p>
                 </div>
             </div>
         </div>
@@ -134,9 +66,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>About Watillery</h2>
-                    <p>Watillery started in 2025 with a small Ontario crew that grew up having water fights and never really stopped. We were tired of blasters that leaked, jammed, or snapped in half halfway through summer, so we started sourcing and testing our own.</p>
+                    <p>Watillery started in 2025 with a small Ontario crew that grew up having water fights and never really stopped. We were tired of blasters that leaked, jammed, or snapped in half halfway through summer, so we started building our own.</p>
                     <p>Everything we sell has been in our own hands first. We fill the tanks, run the batteries down, drop them on the driveway, and hand them to kids to see what breaks. The ones that hold up are the ones you see here.</p>
-                    <p>We are still a tiny team, so the person answering your email is usually the same person who picked the product. That is the way we like it.</p>
+                    <p>We are still a tiny team, so the person answering your email is usually the same person who built the product. That is the way we like it.</p>
                     <div class="features">
                         <div class="feature">
                             <span class="material-symbols-rounded feature-icon good" aria-hidden="true">check_circle</span>
@@ -155,16 +87,13 @@
                             <span>No refunds or returns</span>
                         </div>
                     </div>
+                    <a class="text-link" href="about.html">Read more about us <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span></a>
                 </div>
                 <div class="about-slideshow">
                     <div class="slideshow-container">
                         <div class="slideshow-wrapper">
-                            <div class="slide active">
-                                <img src="img/photography/photography1.JPG" alt="Watillery photoshoot">
-                            </div>
-                            <div class="slide">
-                                <img src="img/photography/photography2.JPG" alt="Watillery photoshoot">
-                            </div>
+                            <div class="slide active"><img src="img/photography/photography1.JPG" alt="Watillery photoshoot"></div>
+                            <div class="slide"><img src="img/photography/photography2.JPG" alt="Watillery photoshoot"></div>
                         </div>
                         <button class="slideshow-nav prev" onclick="changeSlide(-1)" aria-label="Previous slide">
                             <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
@@ -172,9 +101,7 @@
                         <button class="slideshow-nav next" onclick="changeSlide(1)" aria-label="Next slide">
                             <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
                         </button>
-                        <div class="slideshow-progress">
-                            <div class="progress-bar"></div>
-                        </div>
+                        <div class="slideshow-progress"><div class="progress-bar"></div></div>
                         <div class="slideshow-dots">
                             <span class="dot active" onclick="currentSlide(1)"></span>
                             <span class="dot" onclick="currentSlide(2)"></span>
@@ -243,242 +170,18 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-wave" aria-hidden="true">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path class="wave-back" d="M0,40 C180,90 360,90 540,60 C720,30 900,10 1080,30 C1260,50 1350,80 1440,70 L1440,120 L0,120 Z"></path>
-                <path class="wave-front" d="M0,70 C160,40 320,40 480,64 C640,88 800,104 960,88 C1120,72 1280,36 1440,52 L1440,120 L0,120 Z"></path>
-            </svg>
-        </div>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="https://watillery.com/shop/">Shop</a></li>
-                        <li><a href="https://watillery.com/about/">About</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#" id="teamLink">Our Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="https://watillery.com/privacy-policy/">Privacy Policy</a></li>
-                        <li><a href="https://watillery.com/shipping-policy/">Shipping</a></li>
-                        <li><a href="https://watillery.com/refund-returns/">Refunds &amp; Returns</a></li>
-                        <li><a href="https://watillery.com/terms/">Terms of Service</a></li>
-                        <li><a href="https://watillery.com/faq/">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Socials</h4>
-                    <ul>
-                        <li><a href="https://www.facebook.com/people/Watillery/61577575467704/">Facebook</a></li>
-                        <li><a href="https://instagram.com/watillery">Instagram</a></li>
-                        <li><a href="https://tiktok.com/@watillery">TikTok</a></li>
-                        <li><a href="https://youtube.com/@Watillery">YouTube</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe for exclusive deals and new product updates!</p>
-                    <form class="newsletter">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Watillery Corp. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Authentication Modal -->
-    <div class="modal auth-modal" id="authModal">
-        <div class="modal-content auth-modal-content">
-            <button class="close-btn" id="closeAuth" aria-label="Close">
-                <span class="material-symbols-rounded" aria-hidden="true">close</span>
-            </button>
-
-            <div class="auth-tabs" role="tablist">
-                <button class="auth-tab active" data-tab="login" role="tab">Sign In</button>
-                <button class="auth-tab" data-tab="register" role="tab">Register</button>
-            </div>
-
-            <!-- Sign In -->
-            <div id="loginFormContainer" class="auth-form-container">
-                <div class="auth-header">
-                    <h2>Welcome Back</h2>
-                    <p>Sign in to your Watillery account</p>
-                </div>
-
-                <form id="loginForm" class="auth-form">
-                    <div class="error-message" hidden></div>
-
-                    <div class="form-group">
-                        <label for="loginIdentifier">Username or Email</label>
-                        <input type="text" id="loginIdentifier" name="identifier" autocomplete="username" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <div class="password-input">
-                            <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
-                            <button type="button" class="password-toggle" data-target="loginPassword" aria-label="Show password">
-                                <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="form-row-inline">
-                        <label class="checkbox-line">
-                            <input type="checkbox" name="remember" id="rememberMe">
-                            <span>Remember me</span>
-                        </label>
-                        <button type="button" class="link-btn forgot-password">Forgot password?</button>
-                    </div>
-
-                    <button type="submit" class="auth-submit-btn">Sign In</button>
-
-                    <div class="auth-divider"><span>or</span></div>
-                    <button type="button" class="google-btn" data-mode="login">
-                        <span class="google-g" aria-hidden="true">G</span>
-                        Continue with Google
-                    </button>
-                </form>
-            </div>
-
-            <!-- Register -->
-            <div id="registerFormContainer" class="auth-form-container" hidden>
-                <div class="auth-header">
-                    <h2>Create Account</h2>
-                    <p>Join Watillery for the ultimate water play experience</p>
-                </div>
-
-                <form id="registerForm" class="auth-form">
-                    <div class="error-message" hidden></div>
-
-                    <div class="form-group">
-                        <label for="registerUsername">Username</label>
-                        <input type="text" id="registerUsername" name="username" autocomplete="username" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="registerEmail">Email Address</label>
-                        <input type="email" id="registerEmail" name="email" autocomplete="email" required>
-                    </div>
-
-                    <button type="button" class="google-btn" data-mode="register">
-                        <span class="google-g" aria-hidden="true">G</span>
-                        Sign up with Google
-                    </button>
-                    <div class="auth-divider"><span>or with email</span></div>
-
-                    <div class="form-group">
-                        <label for="registerPassword">Password</label>
-                        <div class="password-input">
-                            <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
-                            <button type="button" class="password-toggle" data-target="registerPassword" aria-label="Show password">
-                                <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
-                            </button>
-                        </div>
-                        <div class="password-strength">
-                            <div class="strength-indicator">
-                                <div class="strength-bar"></div>
-                                <div class="strength-bar"></div>
-                                <div class="strength-bar"></div>
-                            </div>
-                        </div>
-                        <div class="password-requirements">
-                            <small>8+ characters, with an uppercase letter, a lowercase letter, a number and a special character.</small>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="registerConfirmPassword">Re-type Password</label>
-                        <div class="password-input">
-                            <input type="password" id="registerConfirmPassword" name="confirmPassword" autocomplete="new-password" required>
-                            <button type="button" class="password-toggle" data-target="registerConfirmPassword" aria-label="Show password">
-                                <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="auth-submit-btn">Create Account</button>
-                </form>
-            </div>
-
-            <!-- Email verification step -->
-            <div id="verifyContainer" class="auth-form-container" hidden>
-                <div class="auth-header">
-                    <h2>Check Your Email</h2>
-                    <p>We sent a verification link to <span class="verify-email"></span></p>
-                </div>
-                <div class="verification-notice">
-                    <h4><span class="material-symbols-rounded" aria-hidden="true">mark_email_unread</span> Verification required</h4>
-                    <p>Click the link in that email to finish setting up your account. It expires in 24 hours.</p>
-                    <div class="verify-demo-link" hidden></div>
-                </div>
-                <div class="verify-actions">
-                    <button type="button" class="auth-submit-btn verify-done">Got it</button>
-                    <button type="button" class="auth-btn login-btn verify-resend">Resend Email</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Shopping Cart</h3>
-                <button class="close-btn" id="closeCart" aria-label="Close">
-                    <span class="material-symbols-rounded" aria-hidden="true">close</span>
-                </button>
-            </div>
-            <div class="cart-items" id="cartItems"></div>
-            <div class="cart-footer">
-                <div class="cart-total">
-                    <strong>Total: $<span id="cartTotal">0.00</span></strong>
-                </div>
-                <button class="checkout-btn">Proceed to Checkout</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="productModal">
-        <div class="modal-content product-modal-content">
-            <button class="close-btn" id="closeProduct" aria-label="Close">
-                <span class="material-symbols-rounded" aria-hidden="true">close</span>
-            </button>
-            <div class="product-detail" id="productDetail"></div>
-        </div>
-    </div>
-
-    <div class="modal" id="teamModal">
-        <div class="modal-content team-modal-content">
-            <button class="close-btn" id="closeTeam" aria-label="Close">
-                <span class="material-symbols-rounded" aria-hidden="true">close</span>
-            </button>
-            <div class="team-detail" id="teamDetail">
-                <h2>The Watillery Team</h2>
-                <div class="team-grid" id="teamGrid"></div>
-            </div>
-        </div>
-    </div>
+    <div data-partial="footer"></div>
+    <div data-partial="modals"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });
-    </script>
+    <script>window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });</script>
 
     <script src="database.js"></script>
     <script src="email-service.js"></script>
+    <script src="partials.js"></script>
     <script src="team.js"></script>
     <script src="events.js"></script>
+    <script src="promos.js"></script>
     <script src="admin-panel.js"></script>
     <script src="products.js"></script>
     <script src="cart.js"></script>

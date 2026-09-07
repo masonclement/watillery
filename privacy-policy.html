@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | Watillery</title>
+    <title>Privacy Policy | Watillery</title>
+    <meta name="description" content="How Watillery handles your information.">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,27 +14,35 @@
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="auth-styles.css">
 </head>
-<body data-page="">
+<body data-page="privacy">
     <div data-partial="nav"></div>
-
-    <section class="hero" id="home">
-        <div class="bubble-container">
-            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">404</h1>
-            <p class="hero-subtitle">That page took a wrong turn at the pool. Let's get you back.</p>
-            <a href="index.html" class="cta-btn">Return Home</a>
+    <section class="page-hero short">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>What we collect and why.</p>
         </div>
         <div class="hero-wave" aria-hidden="true">
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,52 C240,96 480,96 720,56 C960,16 1200,8 1440,48 L1440,100 L0,100 Z"></path></svg>
         </div>
     </section>
-
+    <section class="doc-page">
+        <div class="container">
+            <div class="doc-note">Placeholder copy for the rebuild. Final wording comes from the real watillery.com pages once we have access.</div>
+            <p>Last updated: pending launch.</p>
+            <h2>What we collect</h2>
+            <ul>
+                <li>Contact details you give us when you place an order or message us (name, email, shipping address, phone).</li>
+                <li>Order history so we can handle support and shipping.</li>
+                <li>Basic analytics about how the site is used.</li>
+            </ul>
+            <h2>How we use it</h2>
+            <p>To process and ship orders, answer support requests, and, only if you opt in, send occasional product news. We do not sell your information.</p>
+            <h2>Your choices</h2>
+            <p>Email <a href="index.html#contact">info@watillery.com</a> to see, correct, or delete the information we hold about you, or to unsubscribe from email.</p>
+        </div>
+    </section>
     <div data-partial="footer"></div>
     <div data-partial="modals"></div>
-
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });</script>
     <script src="database.js"></script>

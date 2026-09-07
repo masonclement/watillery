@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | Watillery</title>
+    <title>FAQ | Watillery</title>
+    <meta name="description" content="Common questions about Watillery products and orders.">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,27 +14,32 @@
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="auth-styles.css">
 </head>
-<body data-page="">
+<body data-page="faq">
     <div data-partial="nav"></div>
-
-    <section class="hero" id="home">
-        <div class="bubble-container">
-            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">404</h1>
-            <p class="hero-subtitle">That page took a wrong turn at the pool. Let's get you back.</p>
-            <a href="index.html" class="cta-btn">Return Home</a>
+    <section class="page-hero short">
+        <div class="container">
+            <h1>FAQ</h1>
+            <p>Quick answers to the questions we get most.</p>
         </div>
         <div class="hero-wave" aria-hidden="true">
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,52 C240,96 480,96 720,56 C960,16 1200,8 1440,48 L1440,100 L0,100 Z"></path></svg>
         </div>
     </section>
-
+    <section class="doc-page">
+        <div class="container">
+            <div class="doc-note">Placeholder copy for the rebuild. Final wording comes from the real watillery.com pages once we have access.</div>
+            <h2>Are the batteries included?</h2>
+            <p>Rechargeable models ship with the battery and a USB charging cable. A few basic models take AA batteries, which are not included; the product page says which.</p>
+            <h2>How far do they shoot?</h2>
+            <p>Range is listed on each product page. Electric models generally reach further than manual pump blasters.</p>
+            <h2>Are gel-pellet shooters safe?</h2>
+            <p>They fire soft water-filled gel beads. Eye protection is still recommended and they are not for young children.</p>
+            <h2>Can I change or cancel my order?</h2>
+            <p>Email us right away at <a href="index.html#contact">info@watillery.com</a>. If it has not shipped yet we can usually change it.</p>
+        </div>
+    </section>
     <div data-partial="footer"></div>
     <div data-partial="modals"></div>
-
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>window.emailjs && emailjs.init({ publicKey: 'oIzl4RHrfOtpbyh72' });</script>
     <script src="database.js"></script>
