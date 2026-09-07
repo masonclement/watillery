@@ -180,10 +180,6 @@ const MODALS_HTML = `
                     <label for="registerEmail">Email Address</label>
                     <input type="email" id="registerEmail" name="email" autocomplete="email" required>
                 </div>
-                <button type="button" class="google-btn" data-mode="register">
-                    <span class="google-g" aria-hidden="true">G</span> Sign up with Google
-                </button>
-                <div class="auth-divider"><span>or with email</span></div>
                 <div class="form-group">
                     <label for="registerPassword">Password</label>
                     <div class="password-input">
@@ -211,6 +207,10 @@ const MODALS_HTML = `
                     </div>
                 </div>
                 <button type="submit" class="auth-submit-btn">Create Account</button>
+                <div class="auth-divider"><span>or</span></div>
+                <button type="button" class="google-btn" data-mode="register">
+                    <span class="google-g" aria-hidden="true">G</span> Sign up with Google
+                </button>
             </form>
         </div>
         <div id="verifyContainer" class="auth-form-container" hidden>
