@@ -591,30 +591,42 @@ a.cta-btn { text-decoration: none; display: inline-block; }
   .section-subtitle { margin-top: -16px; }
 }
 
+
 /* ==========================================================================
-   Round 3: type system, button character, redesigned About
+   Round 3+: type system (Baloo 2), button character
    ========================================================================== */
 
 body {
-  font-family: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Baloo 2', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-h1, h2, h3, h4,
+h1, h2, h3, h4, h5,
 .hero-title, .section-title, .events-heading,
 .product-name, .product-detail-info h2,
 .auth-header h2, .admin-header h2, .page-hero h1 {
-  font-family: 'Bricolage Grotesque', 'Hanken Grotesk', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
-.hero-title { font-weight: 800; letter-spacing: -0.03em; }
+.hero-title { font-weight: 800; }
 .section-title { font-weight: 700; }
+
+/* Baloo 2 has a tall x-height and heavy strokes, so give small print a little air */
+.section-subtitle,
+.why-card p,
+.event-body p,
+.footer,
+.doc-page p,
+.doc-page li { font-weight: 400; }
 
 /* ---------- Header buttons: read as buttons, not bold text ---------- */
 
 .nav-actions .auth-btn,
 .nav-actions .cart-btn {
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 999px;
   letter-spacing: 0;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
@@ -697,81 +709,7 @@ h1, h2, h3, h4,
 /* keep the existing shimmer sweep from turning the bg orange */
 .cta-btn:hover { background: var(--accent-yellow) !important; }
 
-/* ---------- Redesigned About: photo background + side image ---------- */
-
-.about-section {
-  position: relative;
-  padding: 0;
-  background: var(--neutral-900);
-  overflow: hidden;
-}
-
-.about-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('img/photography/photography1.JPG');
-  background-size: cover;
-  background-position: center 30%;
-}
-
-.about-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(30, 58, 138, 0.82) 0%, rgba(29, 78, 216, 0.78) 55%, rgba(37, 99, 235, 0.9) 100%);
-}
-
-.about-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: var(--spacing-xxxl) var(--spacing-md);
-  color: #fff;
-}
-
-.about-lead { max-width: 760px; margin-bottom: var(--spacing-xxl); }
-.about-lead h2 { font-size: 2.6rem; font-weight: 800; margin-bottom: var(--spacing-md); color: #fff; }
-.about-lead p { font-size: 1.15rem; line-height: 1.75; color: rgba(255, 255, 255, 0.92); }
-
-.about-split {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--spacing-xxl);
-  align-items: center;
-}
-
-.about-story p {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 1.02rem;
-  line-height: 1.8;
-  margin-bottom: var(--spacing-md);
-}
-
-.about-story .features { margin-top: var(--spacing-lg); }
-.about-story .feature { color: #fff; }
-.about-story .text-link { color: #fff; }
-.about-story .text-link:hover { color: var(--accent-yellow); }
-
-.about-photo {
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
-  transform: rotate(1.5deg);
-}
-
-.about-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
-
-@media (max-width: 900px) {
-  .about-split { grid-template-columns: 1fr; }
-  .about-photo { transform: none; max-height: 360px; }
-  .about-lead h2 { font-size: 2rem; }
-}
-
-/* About on its own page: clear the fixed navbar */
-body[data-page="about"] .about-section .about-inner { padding-top: 128px; }
-
-/* ---------- Events section sits right under the hero now ---------- */
+/* ---------- Events section sits right under the hero ---------- */
 .events-section { border-top: none; }
 
 /* Standalone contact / events pages */

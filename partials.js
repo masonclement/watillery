@@ -13,7 +13,7 @@ const NAV_HTML = `
         </div>
         <ul class="nav-menu">
             <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
-            <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
+            <li><a href="index.html#about" class="nav-link" data-nav="about">About</a></li>
             <li><a href="shop.html" class="nav-link" data-nav="shop">Shop</a></li>
             <li><a href="events.html" class="nav-link" data-nav="events">Events</a></li>
             <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
@@ -82,7 +82,7 @@ const FOOTER_HTML = `
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#about">About</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="#" id="teamLink">Our Team</a></li>
